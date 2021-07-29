@@ -59,7 +59,8 @@ const EnlargedImage: React.FC = () => {
             src={imageLink}
             transition=".3s"
             alt="enlargedImage"
-            width="80%"
+            maxWidth="80%"
+            maxHeight="100vh
           />
         ) : null}
       </Box>
