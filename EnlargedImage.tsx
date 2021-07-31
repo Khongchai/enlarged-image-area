@@ -60,7 +60,7 @@ const EnlargedImage: React.FC = () => {
             transition=".3s"
             alt="enlargedImage"
             maxWidth="80%"
-            maxHeight="100vh
+            maxHeight="100vh"
           />
         ) : null}
       </Box>
