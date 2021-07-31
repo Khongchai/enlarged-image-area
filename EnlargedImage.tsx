@@ -2,12 +2,12 @@ import { Box, Image } from "@chakra-ui/react";
 import React, { useEffect, useRef, useState } from "react";
 
 const EnlargedImage: React.FC = () => {
-  const [imageLink, setImageLink] = useState();
+  const [imageLink, setImageLink] = useState<string | null>(null);
   const enlargedImage = useRef(null);
   useEffect(() => {
-    let images = (document.getElementsByClassName(
+    let images = document.getElementsByClassName(
       "enlargeable"
-    ) as unknown) as HTMLImageElement[];
+    ) as unknown as HTMLImageElement[];
     if (images?.length > 0) {
       for (let i = 0; i < images.length; i++) {
         images[i].style.cursor = "zoom-in";
@@ -19,12 +19,15 @@ const EnlargedImage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (!imageLink) {
-      enlargedImage.current.style.opacity = "0";
-      enlargedImage.current.style.pointerEvents = "none";
-    } else {
-      enlargedImage.current.style.opacity = "1";
-      enlargedImage.current.style.pointerEvents = "unset";
+    if (enlargedImage.current) {
+      const img = enlargedImage.current as unknown as HTMLImageElement;
+      if (!imageLink) {
+        img.style.opacity = "0";
+        img.style.pointerEvents = "none";
+      } else {
+        img.style.opacity = "1";
+        img.style.pointerEvents = "unset";
+      }
     }
   }, [imageLink]);
 
