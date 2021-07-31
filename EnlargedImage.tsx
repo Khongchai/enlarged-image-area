@@ -1,7 +1,9 @@
 import { Box, Image } from "@chakra-ui/react";
 import React, { useEffect, useRef, useState } from "react";
 
-const EnlargedImage: React.FC = () => {
+const EnlargedImages: React.FC<{
+  dependencyData: any | null;
+}> = ({ dependencyData }) => {
   const [imageLink, setImageLink] = useState<string | null>(null);
   const enlargedImage = useRef(null);
   useEffect(() => {
@@ -16,7 +18,7 @@ const EnlargedImage: React.FC = () => {
         });
       }
     }
-  }, []);
+  }, [dependencyData]);
 
   useEffect(() => {
     if (enlargedImage.current) {
@@ -71,4 +73,4 @@ const EnlargedImage: React.FC = () => {
   );
 };
 
-export default EnlargedImage;
+export default EnlargedImages;
